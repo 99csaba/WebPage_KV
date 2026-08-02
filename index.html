@@ -344,7 +344,8 @@
 
   .cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(260px, 340px));
+    justify-content: center;
     gap: 1.5rem;
   }
 
@@ -391,7 +392,7 @@
   .hours-row span:first-child { color: var(--text-soft); }
   .hours-row span:last-child { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; }
 
-  @media (max-width: 780px) { .cards { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
 
   /* ---------- Időpontkérés ---------- */
   .booking {
@@ -669,7 +670,7 @@
       <div class="card">
         <div class="icon">✎</div>
         <h3>Elérhetőség</h3>
-        <p class="highlight">virag.kelemen.konduktor@gmail.com</p>
+        <p class="highlight">kelemen.virag.konduktor@gmail.com</p>
       </div>
 
       <div class="card">
