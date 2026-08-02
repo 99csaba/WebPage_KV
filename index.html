@@ -223,6 +223,104 @@
 
   @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; } }
 
+  /* ---------- Árlista ---------- */
+  .price-intro {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3.5rem;
+    margin-bottom: 1.6rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .price-intro h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--forest);
+  }
+
+  .price-intro span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--text-soft);
+    white-space: nowrap;
+  }
+
+  .price-groups {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .price-group {
+    border-top: 2px solid var(--ochre);
+    padding-top: 1rem;
+  }
+
+  .price-group h4 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: 0.3rem;
+  }
+
+  .price-group .group-note {
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    font-style: italic;
+    margin-bottom: 0.9rem;
+  }
+
+  .price-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .price-row:last-child { border-bottom: none; }
+
+  .price-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    line-height: 1.35;
+  }
+
+  .price-detail {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    margin-top: 0.2rem;
+    line-height: 1.4;
+  }
+
+  .price-amount {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--forest);
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding-top: 0.05rem;
+  }
+
+  @media (max-width: 900px) {
+    .price-groups { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
   /* ---------- Info cards: cím / elérhetőség / nyitva tartás ---------- */
   .info {
     background: var(--sand-light);
@@ -357,6 +455,29 @@
 
   .field textarea { resize: vertical; min-height: 110px; font-family: inherit; }
 
+  .field-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .field-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--ochre);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .field-checkbox label {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.92rem;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--text-dark);
+    cursor: pointer;
+  }
+
   .booking-submit {
     align-self: flex-start;
     display: inline-flex;
@@ -459,25 +580,82 @@
 	hiszen a korai életszakaszban nyújtott támogatás meghatározó a 
 	gyermekek fejlődése szempontjából. 
   </p>
-  <div class="about-grid">
-    <div>
-      <h3>Felmérés és Egyéni fejlesztés</h3>
-      <p>Komplex felmérés (0-3 év / 3-5 év) (60-90 perc + 30 perc) felmérés, anamnézis felvétel + konzultáció: 15 000 Ft</p>
-	  <p>Kontroll vizsgálat (3-6 hónapon túli visszamérés esetén) (60-90 perc) visszamérés, tanácsadás, otthoni javaslatok: 15 000 Ft.</p>
+  <div class="price-intro">
+    <h3>Árlista</h3>
+    <span>Árak Ft-ban, alkalmanként</span>
+  </div>
+  <div class="price-groups">
+    <div class="price-group">
+      <h4>Felmérés és egyéni fejlesztés</h4>
+      <div class="price-list">
+        <div class="price-row">
+          <span class="price-name">
+            Komplex felmérés
+            <span class="price-detail">0–3 év / 3–5 év · 60–90 perc felmérés, anamnézis + 30 perc konzultáció</span>
+          </span>
+          <span class="price-amount">15 000 Ft</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">
+            Kontroll vizsgálat
+            <span class="price-detail">3–6 hónapon túli visszamérés esetén · 60–90 perc visszamérés, tanácsadás, otthoni javaslatok</span>
+          </span>
+          <span class="price-amount">15 000 Ft</span>
+        </div>
+      </div>
     </div>
-    <div>
-      <h3>Felmérés után</h3>
-		<p>Szakvélemény: 13 000 Ft</p>
-		<p>Komplex korai mozgásfejlesztés (0-3 év) (45 perc): 13 000 Ft</p>
-		<p>Komplex mozgásfejlesztés (3-5 év) (45 perc): 13 000 Ft</p>
-		<p>Szülőkonzultáció, tanácsadás: 13 000 Ft</p>
-		<p>Otthoni feladatok: 10 000 Ft</p>
+
+    <div class="price-group">
+      <h4>Felmérés után</h4>
+      <div class="price-list">
+        <div class="price-row">
+          <span class="price-name">Szakvélemény</span>
+          <span class="price-amount">13 000 Ft</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">
+            Komplex korai mozgásfejlesztés
+            <span class="price-detail">0–3 év · 45 perc</span>
+          </span>
+          <span class="price-amount">13 000 Ft</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">
+            Komplex mozgásfejlesztés
+            <span class="price-detail">3–5 év · 45 perc</span>
+          </span>
+          <span class="price-amount">13 000 Ft</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Szülőkonzultáció, tanácsadás</span>
+          <span class="price-amount">13 000 Ft</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">Otthoni feladatok</span>
+          <span class="price-amount">10 000 Ft</span>
+        </div>
+      </div>
     </div>
-    <div>
-      <h3>Csoportos</h3>
-		<p>Csoportos foglalkozás indulása - 3 jelentkezőtől</p>
-		<p>Csoportos korai mozgásfejlesztés (0-3 év) (45 perc):  8000 Ft</p>
-		<p>Csoportos komplex mozgásfejlesztés (3-5 év) (45 perc):  8000 Ft</p>
+
+    <div class="price-group">
+      <h4>Csoportos foglalkozás</h4>
+      <p class="group-note">Indulás 3 jelentkezőtől</p>
+      <div class="price-list">
+        <div class="price-row">
+          <span class="price-name">
+            Csoportos korai mozgásfejlesztés
+            <span class="price-detail">0–3 év · 45 perc</span>
+          </span>
+          <span class="price-amount">8 000 Ft</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">
+            Csoportos komplex mozgásfejlesztés
+            <span class="price-detail">3–5 év · 45 perc</span>
+          </span>
+          <span class="price-amount">8 000 Ft</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -526,6 +704,10 @@
       <label for="message">Üzenet</label>
       <textarea id="message" name="message" placeholder="Írd le röviden, miben segíthetek, és milyen időpontok lennének jók."></textarea>
     </div>
+    <div class="field-checkbox">
+      <input type="checkbox" id="callback" name="callback">
+      <label for="callback">Inkább visszahívást kérek</label>
+    </div>
     <button type="submit" class="booking-submit">Küldés e-mailben →</button>
     <p class="booking-note">A gomb megnyitja az e-mail programodat egy előre kitöltött levéllel a 99b.csaba@gmail.com címzettnek.</p>
     <p class="form-status" id="form-status">Az e-mail program megnyílt egy új ablakban. Ha nem történt semmi, ellenőrizd, hogy van-e beállított levelezőprogramod.</p>
@@ -548,12 +730,14 @@
     const phone = document.getElementById('phone').value.trim();
     const email = document.getElementById('email').value.trim();
     const message = document.getElementById('message').value.trim();
+    const callback = document.getElementById('callback').checked;
 
-    const subject = `Időpontkérés – ${name}`;
+    const subject = `Időpontkérés – ${name}${callback ? ' (visszahívást kér)' : ''}`;
     const body =
       `Név: ${name}\n` +
       `Telefonszám: ${phone}\n` +
-      `E-mail cím: ${email}\n\n` +
+      `E-mail cím: ${email}\n` +
+      `Inkább visszahívást kér: ${callback ? 'Igen' : 'Nem'}\n\n` +
       `Üzenet:\n${message || '(nincs megadva)'}`;
 
     const mailtoLink =
