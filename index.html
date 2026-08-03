@@ -547,7 +547,7 @@
     <ul class="nav-links">
       <li><a href="#bemutatkozas">Bemutatkozás</a></li>
       <li><a href="#elerhetoseg">Elérhetőség</a></li>
-      <li><a href="#idopont">Időpontkérés</a></li>
+      <li><a href="#idopont">Időpont kérés</a></li>
     </ul>
   </nav>
 </header>
@@ -685,7 +685,7 @@
 
 <section class="booking" id="idopont">
   <span class="eyebrow">Időpont kérés</span>
-  <h2>Időpontkérés</h2>
+  <h2>Időpont kérés</h2>
   <p>Add meg az adataidat, és néhány napon belül visszajelzek a szabad időpontokról. A beküldés a saját e-mail programodat nyitja meg, ott tudod elküldeni az üzenetet.</p>
 
   <form class="booking-form" id="booking-form">
@@ -733,7 +733,7 @@
     const message = document.getElementById('message').value.trim();
     const callback = document.getElementById('callback').checked;
 
-    const subject = `Időpontkérés – ${name}${callback ? ' (visszahívást kér)' : ''}`;
+    const subject = `Időpont kérés – ${name}${callback ? ' (visszahívást kér)' : ''}`;
     const body =
       `Név: ${name}\n` +
       `Telefonszám: ${phone}\n` +
