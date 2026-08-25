@@ -565,9 +565,11 @@
     font-size: 0.88rem;
     color: var(--sage);
     display: none;
+    font-weight: 500;
   }
 
   .form-status.visible { display: block; }
+  .form-status.error { color: #B3452F; }
 
   /* ---------- Footer ---------- */
   footer {
@@ -780,11 +782,13 @@
 <section class="booking" id="idopont">
   <span class="eyebrow">Időpontkérés</span>
   <h2>Időpontkérés</h2>
-  <p>Az alábbi e-mail címen  vagyok elérhető: virag.kelemen.konduktor@gmail.com </p>
-  <p> Add meg az adataidat, és néhány napon belül visszajelzek a szabad időpontokról. 
-	  A beküldés a saját e-mail programodat nyitja meg, ott tudod elküldeni az üzenetet.</p>
+  <p>Add meg az adataidat, és néhány napon belül visszajelzek a szabad időpontokról. A beküldés az oldalon marad, nem nyit meg semmilyen levelezőprogramot.</p>
 
   <form class="booking-form" id="booking-form">
+    <input type="hidden" name="access_key" value="f019b079-3a24-4fa5-96db-36ff71941ccd">
+    <input type="hidden" name="subject" value="Új időpontkérés – KV Fejlesztő">
+    <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
+
     <div class="field">
       <label for="name">Név</label>
       <input type="text" id="name" name="name" required autocomplete="name">
@@ -802,12 +806,12 @@
       <textarea id="message" name="message" placeholder="Írd le röviden, miben segíthetek, és milyen időpontok lennének jók."></textarea>
     </div>
     <div class="field-checkbox">
-      <input type="checkbox" id="callback" name="callback">
+      <input type="checkbox" id="callback" name="visszahivas">
       <label for="callback">Inkább visszahívást kérek</label>
     </div>
-    <button type="submit" class="booking-submit">Küldés e-mailben →</button>
-    <p class="booking-note">A gomb megnyitja az e-mail programodat egy előre kitöltött levéllel a virag.kelemen.konduktor@gmail.com címzettnek.</p>
-    <p class="form-status" id="form-status">Az e-mail program megnyílt egy új ablakban. Ha nem történt semmi, ellenőrizd, hogy van-e beállított levelezőprogramod.</p>
+    <button type="submit" class="booking-submit" id="booking-submit">Küldés →</button>
+    <p class="booking-note">A küldés gombra kattintva az adatok automatikusan, levelezőprogram megnyitása nélkül megérkeznek hozzám.</p>
+    <p class="form-status" id="form-status"></p>
   </form>
 </section>
 
@@ -819,34 +823,47 @@
 <script>
   const bookingForm = document.getElementById('booking-form');
   const formStatus = document.getElementById('form-status');
+  const submitBtn = document.getElementById('booking-submit');
 
-  bookingForm.addEventListener('submit', function (e) {
+  bookingForm.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    const name = document.getElementById('name').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
     const callback = document.getElementById('callback').checked;
+    const formData = new FormData(bookingForm);
 
-    const subject = `Időpontkérés – ${name}${callback ? ' (visszahívást kér)' : ''}`;
-    const body =
-      `Név: ${name}\n` +
-      `Telefonszám: ${phone}\n` +
-      `E-mail cím: ${email}\n` +
-      `Inkább visszahívást kér: ${callback ? 'Igen' : 'Nem'}\n\n` +
-      `Üzenet:\n${message || '(nincs megadva)'}`;
+    // A checkbox értékét szöveggé alakítjuk, hogy a levélben is jól olvasható legyen
+    formData.set('visszahivas', callback ? 'Igen' : 'Nem');
 
-    const mailtoLink =
-      `mailto:virag.kelemen.konduktor@gmail.com` +
-      `?subject=${encodeURIComponent(subject)}` +
-      `&body=${encodeURIComponent(body)}`;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Küldés...';
+    formStatus.classList.remove('visible', 'error');
 
-    window.location.href = mailtoLink;
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
 
-    formStatus.classList.add('visible');
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        formStatus.textContent = 'Köszönöm a jelentkezést! Hamarosan felveszem veled a kapcsolatot.';
+        formStatus.classList.add('visible');
+        bookingForm.reset();
+      } else {
+        throw new Error(result.message || 'Web3Forms hiba');
+      }
+    } catch (err) {
+      formStatus.textContent = 'Sajnos most nem sikerült elküldeni. Kérlek, próbáld újra, vagy hívj telefonon.';
+      formStatus.classList.add('visible', 'error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Küldés →';
+    }
   });
 </script>
 
 </body>
 </html>
+	
