@@ -786,7 +786,7 @@
 
   <form class="booking-form" id="booking-form">
     <input type="hidden" name="access_key" value="f019b079-3a24-4fa5-96db-36ff71941ccd">
-    <input type="hidden" name="subject" value="Új időpontkérés – KV Fejlesztő">
+    <input type="hidden" name="subject" value="Új időpontkérés">
     <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
 
     <div class="field">
@@ -855,7 +855,7 @@
         throw new Error(result.message || 'Web3Forms hiba');
       }
     } catch (err) {
-      formStatus.textContent = 'Sajnos most nem sikerült elküldeni. Kérlek, próbáld újra, vagy hívj telefonon.';
+      formStatus.textContent = 'Sajnos most nem sikerült elküldeni. Kérlek, próbáld újra késöbb, vagy közvetlenűl az email fiókodból.';
       formStatus.classList.add('visible', 'error');
     } finally {
       submitBtn.disabled = false;
