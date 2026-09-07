@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="hu" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Kelemen Virág, konduktor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest: #1F3A34;
+    --forest-dark: #162924;
+    --sand: #F2EDE1;
+    --sand-light: #FAF7F0;
+    --sage: #7C9885;
+    --ochre: #C98A3E;
+    --text-dark: #22302B;
+    --text-soft: #5A6B62;
+    --line: #DAD3C2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Work Sans', sans-serif;
+    background: var(--sand);
+    color: var(--text-dark);
+    line-height: 1.6;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ochre);
+  }
+
+  a { color: inherit; }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--sand-light);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 1.1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--forest);
+  }
+
+  .logo span { color: var(--ochre); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    font-size: 0.92rem;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-soft);
+    transition: color 0.2s ease;
+  }
+
+  .nav-links a:hover, .nav-links a:focus-visible { color: var(--forest); }
+
+  .lang-switch {
+    display: flex;
+    gap: 0.55rem;
+    align-items: center;
+    margin-left: 2rem;
+    padding-left: 2rem;
+    border-left: 1px solid var(--line);
+  }
+
+  .lang-switch button {
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    background: none;
+    cursor: pointer;
+    line-height: 0;
+    opacity: 0.55;
+    transition: opacity 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+  }
+
+  .lang-switch button img {
+    display: block;
+    width: 24px;
+    height: 18px;
+    border-radius: 2px;
+    object-fit: cover;
+  }
+
+  .lang-switch button:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  .lang-switch button.active {
+    opacity: 1;
+    border-color: var(--ochre);
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .lang-switch { margin-left: auto; padding-left: 0; border-left: none; }
+  }
+
+  /* ---------- Hero / Bemutatkozás ---------- */
+  .hero {
+    position: relative;
+    color: var(--sand-light);
+    padding: 5.5rem 1.5rem 6rem;
+    overflow: hidden;
+    background-color: var(--forest);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('bg_pic1.avif');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+
+  .hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(22,41,36,0.88) 0%, rgba(22,41,36,0.78) 55%, rgba(31,58,52,0.72) 100%);
+  }
+
+  .hero-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero-portrait {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--ochre);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.35);
+    justify-self: center;
+  }
+
+  .hero-portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero .eyebrow { color: var(--ochre); margin-bottom: 1.2rem; display: block; }
+
+  .hero h1 {
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    line-height: 1.22;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+
+  .hero h1 strong {
+    font-weight: 600;
+    color: var(--ochre);
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    color: #D9E3DC;
+    max-width: 560px;
+    margin-bottom: 2rem;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--ochre);
+    color: var(--forest-dark);
+    font-weight: 600;
+    padding: 0.85rem 1.6rem;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.25); }
+
+  @media (max-width: 720px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .hero-portrait { width: 200px; height: 200px; }
+    .hero p { margin-left: auto; margin-right: auto; }
+  }
+
+  /* ---------- Bemutatkozás / About continued ---------- */
+  .about {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem;
+  }
+
+  .about h2 { font-size: 1.7rem; margin-bottom: 1.1rem; color: var(--forest); }
+
+  .about p { color: var(--text-soft); margin-bottom: 1rem; max-width: 620px; }
+
+  .about-grid {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .about-grid div {
+    border-top: 2px solid var(--ochre);
+    padding-top: 0.8rem;
+  }
+
+  .about-grid h3 {
+    font-size: 1rem;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  .about-grid p { font-size: 0.9rem; margin: 0; }
+
+  @media (max-width: 700px) { .about-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- Árlista ---------- */
+  .price-intro {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 3.5rem;
+    margin-bottom: 1.6rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .price-intro h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--forest);
+  }
+
+  .price-intro span {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--text-soft);
+    white-space: nowrap;
+  }
+
+  .price-groups {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .price-group {
+    border-top: 2px solid var(--ochre);
+    padding-top: 1rem;
+  }
+
+  .price-group h4 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--forest);
+    margin-bottom: 0.3rem;
+  }
+
+  .price-group .group-note {
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    font-style: italic;
+    margin-bottom: 0.9rem;
+  }
+
+  .price-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .price-row:last-child { border-bottom: none; }
+
+  .price-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    line-height: 1.35;
+  }
+
+  .price-detail {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    margin-top: 0.2rem;
+    line-height: 1.4;
+  }
+
+  .price-amount {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--forest);
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding-top: 0.05rem;
+  }
+
+  @media (max-width: 900px) {
+    .price-groups { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
+  /* ---------- Kinek ajánlott (kompakt, tömör) ---------- */
+  .indications {
+    background: var(--sand-light);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 3rem 1.5rem;
+  }
+
+  .indications-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .indications-inner > .eyebrow { display: block; margin-bottom: 0.5rem; }
+
+  .indications-inner > h2 {
+    color: var(--forest);
+    font-size: 1.35rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .indications-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.55rem 2.2rem;
+  }
+
+  .indications-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--text-soft);
+  }
+
+  .indications-list .check {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 0.15rem;
+    border-radius: 50%;
+    background: var(--forest);
+    color: var(--sand-light);
+    font-size: 0.62rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media (max-width: 680px) {
+    .indications-list { grid-template-columns: 1fr; }
+  }
+
+  /* ---------- Info cards: cím / elérhetőség / nyitva tartás ---------- */
+  .info {
+    background: var(--sand-light);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 4.5rem 1.5rem;
+  }
+
+  .info-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  .info-inner > .eyebrow { display: block; margin-bottom: 0.6rem; }
+
+  .info-inner > h2 {
+    color: var(--forest);
+    font-size: 1.7rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 340px));
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .card {
+    background: var(--sand);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1.8rem 1.6rem;
+  }
+
+  .card .icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--forest);
+    color: var(--sand-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.85rem;
+    margin-bottom: 1.1rem;
+  }
+
+  .card h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.7rem;
+    color: var(--forest);
+  }
+
+  .card p { font-size: 0.92rem; color: var(--text-soft); margin: 0 0 0.3rem; }
+
+  .card .highlight { color: var(--text-dark); font-weight: 500; }
+
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.92rem;
+    padding: 0.25rem 0;
+  }
+
+  .hours-row span:first-child { color: var(--text-soft); }
+  .hours-row span:last-child { font-family: 'IBM Plex Mono', monospace; font-size: 0.85rem; }
+
+  @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
+
+  /* ---------- Időpontkérés ---------- */
+  .booking {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 4.5rem 1.5rem 5rem;
+  }
+
+  .booking > .eyebrow { display: block; margin-bottom: 0.6rem; }
+
+  .booking h2 {
+    color: var(--forest);
+    font-size: 1.7rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .booking > p {
+    color: var(--text-soft);
+    font-size: 0.95rem;
+    margin-bottom: 2.2rem;
+    max-width: 480px;
+  }
+
+  .booking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .field label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+
+  .field input,
+  .field textarea {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.98rem;
+    color: var(--text-dark);
+    background: var(--sand-light);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.75rem 0.9rem;
+    transition: border-color 0.18s ease;
+  }
+
+  .field input:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--sage);
+  }
+
+  .field textarea { resize: vertical; min-height: 110px; font-family: inherit; }
+
+  .field-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .field-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--ochre);
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .field-checkbox label {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.92rem;
+    letter-spacing: normal;
+    text-transform: none;
+    color: var(--text-dark);
+    cursor: pointer;
+  }
+
+  .booking-submit {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--forest);
+    color: var(--sand-light);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 3px;
+    padding: 0.85rem 1.7rem;
+    cursor: pointer;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  }
+
+  .booking-submit:hover {
+    background: var(--forest-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+  }
+
+  .booking-note {
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    margin-top: -0.4rem;
+  }
+
+  .form-status {
+    font-size: 0.88rem;
+    color: var(--sage);
+    display: none;
+    font-weight: 500;
+  }
+
+  .form-status.visible { display: block; }
+  .form-status.error { color: #B3452F; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--forest-dark);
+    color: #A9BAB1;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  footer .logo { color: var(--sand-light); justify-content: center; display: flex; margin-bottom: 0.6rem; }
+  footer .logo span { color: var(--ochre); }
+
+  /* Focus visibility for accessibility */
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid var(--ochre);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero-cta { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="logo">Kelemen Virág <span>konduktor</span></div>
+    <ul class="nav-links">
+      <li><a href="#bemutatkozas" data-i18n="nav_about">Bemutatkozás</a></li>
+      <li><a href="#kinek-ajanlott" data-i18n="nav_indications">Kinek ajánlott</a></li>
+      <li><a href="#elerhetoseg" data-i18n="nav_contact">Elérhetőség</a></li>
+      <li><a href="#idopont" data-i18n="nav_booking">Időpontkérés</a></li>
+    </ul>
+    <div class="lang-switch" role="group" aria-label="Nyelv választása">
+      <button type="button" data-lang="hu" class="active" aria-label="Magyar"><img src="https://flagcdn.com/w40/hu.png" alt="Magyar zászló"></button>
+      <button type="button" data-lang="en" aria-label="English"><img src="https://flagcdn.com/w40/gb.png" alt="Angol zászló"></button>
+      <button type="button" data-lang="de" aria-label="Deutsch"><img src="https://flagcdn.com/w40/de.png" alt="Német zászló"></button>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="bemutatkozas">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-portrait">
+      <img src="profil.jpg" alt="Kelemen Virág portréja">
+    </div>
+    <div>
+     
+      <h1 data-i18n-html="hero_title">Kelemen Virág, <strong>konduktor.</strong></h1>
+      <p data-i18n="hero_text">
+        Hiszem, hogy minden gyermek a saját tempójában fejlődik, és ehhez a fejlődéshez más-más támogatásra lehet szükség.
+		A korai években minden apró lépés fontos. Konduktorként a 0–5 éves gyermekek fejlődését támogatom komplex szemlélettel, 
+		a gyermek egyéni szükségleteihez és a család mindennapjaihoz igazodva.
+      </p>
+      <a class="hero-cta" href="#idopont" data-i18n="hero_cta">Időpontot kérek →</a>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <span class="eyebrow" data-i18n="about_eyebrow">Bemutatkozás</span>
+  <h2 data-i18n="about_h2_1">Konduktív fejlesztés</h2>
+  <p data-i18n="about_p1">
+    Kelemen Virág vagyok, konduktor és drámapedagógus.
+	Elsősorban a 0-3 éves gyermekek korai fejlesztésével és 3-5 gyermekek fejlesztésével foglalkozom magyar és angol nyelven.
+	  A foglalkozásokat Budapesten, a XIII. kerületben tartom. Szakmai tapasztalatot belföldön és külföldön egyaránt szereztem
+	  eddigi munkám során. Munkám középpontjában a prevencióra épülő, komplex fejlesztés áll, hiszen a korai életszakaszban nyújtott
+	  támogatás hosszú távon is meghatározó szerepet játszik a gyermekek fejlődésében.
+  </p>
+</section>
+
+<section class="indications" id="kinek-ajanlott">
+  <div class="indications-inner">
+    <span class="eyebrow" data-i18n="indications_eyebrow">Kinek ajánlott</span>
+    <h2 data-i18n="indications_h2">Érdemes konduktorhoz fordulni, ha gyermeke:</h2>
+    <ul class="indications-list">
+      <li><span class="check">✓</span><span data-i18n="indications_1">mozgásfejlődése eltér a megszokott ütemtől</span></li>
+      <li><span class="check">✓</span><span data-i18n="indications_2">mozgása bizonytalan, vagy egyensúlyproblémái vannak</span></li>
+      <li><span class="check">✓</span><span data-i18n="indications_3">nehézséget tapasztal a finommotoros feladatokban</span></li>
+      <li><span class="check">✓</span><span data-i18n="indications_4">koraszülöttként született, és/vagy születése körül fokozott fejlődési nyomon követést indokló körülmények álltak fenn</span></li>
+      <li><span class="check">✓</span><span data-i18n="indications_5">neurológiai eredetű fejlődési eltéréssel él</span></li>
+      <li><span class="check">✓</span><span data-i18n="indications_6">gyermekorvos, védőnő vagy más szakember konduktív fejlesztést javasol</span></li>
+      <li><span class="check">✓</span><span data-i18n="indications_7">kommunikációja vagy beszédfejlődése lassabban indul</span></li>
+      <li><span class="check">✓</span><span data-i18n="indications_8">megelőzés céljából is szeretné tudatosan támogatni gyermeke fejlődését, és kérdései vannak annak alakulásával kapcsolatban</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="about">
+	<h2 data-i18n="about_h2_2">Szemléletem</h2>
+	<p data-i18n="about_p2">Minden gyermek egyedi, saját fejlődési ütemmel és képességekkel. Konduktorként célom, hogy segítsem a gyermekek fejlődését,
+	és támogassam a családokat abban, hogy a bennük rejlő lehetőségeket minél jobban kibontakoztathassák.
+	A komplex korai fejlesztés során születéstől 5 éves korig foglalkozom azokkal a gyermekekkel, 
+	akiknek mozgásfejlődése vagy más fejlődési területe támogatást igényel. A fejlesztést minden esetben a
+	gyermek egyéni szükségleteihez és a család igényeihez igazítom.
+	Munkám alapja a konduktív pedagógia komplex szemlélete, amely a gyermeket egészében tekinti. 
+	A mozgásfejlesztés mellett hangsúlyt kap a figyelem, az érzékelés, a kommunikáció, a gondolkodás, 
+	az önállóság és a mindennapi készségek fejlesztése is. A foglalkozások játékosak, élményközpontúak és életkorhoz igazítottak,
+	biztonságos, elfogadó légkörben.
+	Fontosnak tartom a szülőkkel való együttműködést, a folyamatos kommunikációt és a mindennapokban 
+	is jól alkalmazható gyakorlati tanácsok átadását. Hiszem, hogy a közös munka teremti meg a gyermek fejlődésének legjobb alapját.
+	Szeretettel várom Önöket egy személyes találkozásra, ahol együtt megtaláljuk gyermekük számára a legmegfelelőbb fejlesztési utat. </p>
+
+	
+  <div class="price-intro">
+    <h3 data-i18n="price_title">Árlista</h3>
+    <span data-i18n="price_subtitle">Az árak forintban értendők, alkalmanként</span>
+  </div>
+  <div class="price-groups">
+    <div class="price-group">
+      <h4 data-i18n="price_group1_title">Felmérés és egyéni fejlesztés</h4>
+      <div class="price-list">
+        <div class="price-row">
+          <span class="price-name">
+            <span data-i18n="price_item1_name">Komplex felmérés</span>
+            <span class="price-detail" data-i18n="price_item1_detail">0–3 év / 3–5 év · 60–90 perc felmérés, anamnézis + 30 perc konzultáció</span>
+          </span>
+          <span class="price-amount">15 000 Ft</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">
+            <span data-i18n="price_item2_name">Kontroll vizsgálat</span>
+            <span class="price-detail" data-i18n="price_item2_detail">3–6 hónapon túli visszamérés esetén · 60–90 perc visszamérés, tanácsadás, otthoni javaslatok</span>
+          </span>
+          <span class="price-amount">15 000 Ft</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-group">
+      <h4 data-i18n="price_group2_title">Felmérés után</h4>
+      <div class="price-list">
+        <div class="price-row">
+          <span class="price-name" data-i18n="price_item3_name">Szakvélemény</span>
+          <span class="price-amount">13 000 Ft</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">
+            <span data-i18n="price_item4_name">Komplex korai mozgásfejlesztés</span>
+            <span class="price-detail" data-i18n="price_item4_detail">0–3 év · 45 perc</span>
+          </span>
+          <span class="price-amount">13 000 Ft</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">
+            <span data-i18n="price_item5_name">Komplex mozgásfejlesztés</span>
+            <span class="price-detail" data-i18n="price_item5_detail">3–5 év · 45 perc</span>
+          </span>
+          <span class="price-amount">13 000 Ft</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name" data-i18n="price_item6_name">Szülőkonzultáció, tanácsadás</span>
+          <span class="price-amount">13 000 Ft</span>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="price-group">
+      <h4 data-i18n="price_group3_title">Csoportos foglalkozás</h4>
+      <p class="group-note" data-i18n="price_group3_note">Indulás 3 jelentkezőtől</p>
+      <div class="price-list">
+        <div class="price-row">
+          <span class="price-name">
+            <span data-i18n="price_item7_name">Csoportos korai mozgásfejlesztés</span>
+            <span class="price-detail" data-i18n="price_item7_detail">0–3 év · 45 perc</span>
+          </span>
+          <span class="price-amount">6 000 Ft</span>
+        </div>
+        <div class="price-row">
+          <span class="price-name">
+            <span data-i18n="price_item8_name">Csoportos komplex mozgásfejlesztés</span>
+            <span class="price-detail" data-i18n="price_item8_detail">3–5 év · 45 perc</span>
+          </span>
+          <span class="price-amount">6 000 Ft</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="info" id="elerhetoseg">
+  <div class="info-inner">
+    <span class="eyebrow" data-i18n="contact_eyebrow">Kapcsolat</span>
+    <h2 data-i18n="contact_h2">Elérhetőség és nyitvatartás</h2>
+    <div class="cards">
+	
+	  <div class="card">
+        <div class="icon">◎</div>
+        <h3 data-i18n="card_address_title">Cím</h3>
+        <p class="highlight">1139 Budapest</p>
+        <p>Országbíró u. 44-46</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">✎</div>
+        <h3 data-i18n="card_contact_title">Elérhetőség</h3>
+        <p class="highlight">virag.kelemen.konduktor@gmail.com</p>
+		<p class="highlight">+36 30 256 3054</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🕐</div>
+        <h3 data-i18n="card_hours_title">Nyitvatartás</h3>
+        <div class="hours-row"><span data-i18n="hours_day">Kedd</span><span>13:00–18:00</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="booking" id="idopont">
+  <h2 data-i18n="booking_h2">Időpontkérés</h2>
+  <p data-i18n="booking_p">Add meg az adataidat, és néhány napon belül visszajelzek a szabad időpontokról.</p>
+
+  <form class="booking-form" id="booking-form">
+    <input type="hidden" name="access_key" value="f019b079-3a24-4fa5-96db-36ff71941ccd">
+    <input type="hidden" name="subject" value="Új időpontkérés">
+    <input type="checkbox" name="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
+
+    <div class="field">
+      <label for="name" data-i18n="label_name">Név</label>
+      <input type="text" id="name" name="name" required autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="phone" data-i18n="label_phone">Telefonszám</label>
+      <input type="tel" id="phone" name="phone" required autocomplete="tel">
+    </div>
+    <div class="field">
+      <label for="email" data-i18n="label_email">E-mail cím</label>
+      <input type="email" id="email" name="email" required autocomplete="email">
+    </div>
+    <div class="field">
+      <label for="message" data-i18n="label_message">Üzenet</label>
+      <textarea id="message" name="message" data-i18n-placeholder="message_placeholder" placeholder="Írd le röviden, miben segíthetek, és milyen időpontok lennének jók."></textarea>
+    </div>
+    <div class="field-checkbox">
+      <input type="checkbox" id="callback" name="visszahivas">
+      <label for="callback" data-i18n="label_callback">Inkább visszahívást kérek</label>
+    </div>
+    <button type="submit" class="booking-submit" id="booking-submit" data-i18n="submit_btn">Küldés →</button>
+    <p class="form-status" id="form-status"></p>
+  </form>
+</section>
+
+<footer>
+  <div class="logo">Kelemen Virág <span>, konduktor</span></div>
+  <p data-i18n="footer_tagline">Konduktív fejlesztés Budapesten</p>
+</footer>
+
+<script>
+  // ---------- Fordítási szótár ----------
+  const TRANSLATIONS = {
+    hu: {
+      title: "Kelemen Virág, konduktor",
+      nav_about: "Bemutatkozás",
+      nav_indications: "Kinek ajánlott",
+      nav_contact: "Elérhetőség",
+      nav_booking: "Időpontkérés",
+      hero_title_html: 'Kelemen Virág, <strong>konduktor.</strong>',
+      hero_text: "Hiszem, hogy minden gyermek a saját tempójában fejlődik, és ehhez a fejlődéshez más-más támogatásra lehet szükség. A korai években minden apró lépés fontos. Konduktorként a 0–5 éves gyermekek fejlődését támogatom komplex szemlélettel, a gyermek egyéni szükségleteihez és a család mindennapjaihoz igazodva.",
+      hero_cta: "Időpontot kérek →",
+      about_eyebrow: "Bemutatkozás",
+      about_h2_1: "Konduktív fejlesztés",
+      about_p1: "Kelemen Virág vagyok, konduktor és drámapedagógus. Elsősorban a 0-3 éves gyermekek korai fejlesztésével és 3-5 gyermekek fejlesztésével foglalkozom magyar és angol nyelven. A foglalkozásokat Budapesten, a XIII. kerületben tartom. Szakmai tapasztalatot belföldön és külföldön egyaránt szereztem eddigi munkám során. Munkám középpontjában a prevencióra épülő, komplex fejlesztés áll, hiszen a korai életszakaszban nyújtott támogatás hosszú távon is meghatározó szerepet játszik a gyermekek fejlődésében.",
+      about_h2_2: "Szemléletem",
+      about_p2: "Minden gyermek egyedi, saját fejlődési ütemmel és képességekkel. Konduktorként célom, hogy segítsem a gyermekek fejlődését, és támogassam a családokat abban, hogy a bennük rejlő lehetőségeket minél jobban kibontakoztathassák. A komplex korai fejlesztés során születéstől 5 éves korig foglalkozom azokkal a gyermekekkel, akiknek mozgásfejlődése vagy más fejlődési területe támogatást igényel. A fejlesztést minden esetben a gyermek egyéni szükségleteihez és a család igényeihez igazítom. Munkám alapja a konduktív pedagógia komplex szemlélete, amely a gyermeket egészében tekinti. A mozgásfejlesztés mellett hangsúlyt kap a figyelem, az érzékelés, a kommunikáció, a gondolkodás, az önállóság és a mindennapi készségek fejlesztése is. A foglalkozások játékosak, élményközpontúak és életkorhoz igazítottak, biztonságos, elfogadó légkörben. Fontosnak tartom a szülőkkel való együttműködést, a folyamatos kommunikációt és a mindennapokban is jól alkalmazható gyakorlati tanácsok átadását. Hiszem, hogy a közös munka teremti meg a gyermek fejlődésének legjobb alapját. Szeretettel várom Önöket egy személyes találkozásra, ahol együtt megtaláljuk gyermekük számára a legmegfelelőbb fejlesztési utat.",
+      price_title: "Árlista",
+      price_subtitle: "Az árak forintban értendők, alkalmanként",
+      price_group1_title: "Felmérés és egyéni fejlesztés",
+      price_item1_name: "Komplex felmérés",
+      price_item1_detail: "0–3 év / 3–5 év · 60–90 perc felmérés, anamnézis + 30 perc konzultáció",
+      price_item2_name: "Kontroll vizsgálat",
+      price_item2_detail: "3–6 hónapon túli visszamérés esetén · 60–90 perc visszamérés, tanácsadás, otthoni javaslatok",
+      price_group2_title: "Felmérés után",
+      price_item3_name: "Szakvélemény",
+      price_item4_name: "Komplex korai mozgásfejlesztés",
+      price_item4_detail: "0–3 év · 45 perc",
+      price_item5_name: "Komplex mozgásfejlesztés",
+      price_item5_detail: "3–5 év · 45 perc",
+      price_item6_name: "Szülőkonzultáció, tanácsadás",
+      price_group3_title: "Csoportos foglalkozás",
+      price_group3_note: "Indulás 3 jelentkezőtől",
+      price_item7_name: "Csoportos korai mozgásfejlesztés",
+      price_item7_detail: "0–3 év · 45 perc",
+      price_item8_name: "Csoportos komplex mozgásfejlesztés",
+      price_item8_detail: "3–5 év · 45 perc",
+      contact_eyebrow: "Kapcsolat",
+      contact_h2: "Elérhetőség és nyitvatartás",
+      card_address_title: "Cím",
+      card_contact_title: "Elérhetőség",
+      card_hours_title: "Nyitvatartás",
+      hours_day: "Kedd",
+      indications_eyebrow: "Kinek ajánlott",
+      indications_h2: "Érdemes konduktorhoz fordulni, ha gyermeke:",
+      indications_1: "mozgásfejlődése eltér a megszokott ütemtől",
+      indications_2: "mozgása bizonytalan, vagy egyensúlyproblémái vannak",
+      indications_3: "nehézséget tapasztal a finommotoros feladatokban",
+      indications_4: "koraszülöttként született, és/vagy születése körül fokozott fejlődési nyomon követést indokló körülmények álltak fenn",
+      indications_5: "neurológiai eredetű fejlődési eltéréssel él",
+      indications_6: "gyermekorvos, védőnő vagy más szakember konduktív fejlesztést javasol",
+      indications_7: "kommunikációja vagy beszédfejlődése lassabban indul",
+      indications_8: "megelőzés céljából is szeretné tudatosan támogatni gyermeke fejlődését, és kérdései vannak annak alakulásával kapcsolatban",
+      booking_h2: "Időpontkérés",
+      booking_p: "Add meg az adataidat, és néhány napon belül visszajelzek a szabad időpontokról.",
+      label_name: "Név",
+      label_phone: "Telefonszám",
+      label_email: "E-mail cím",
+      label_message: "Üzenet",
+      message_placeholder: "Írd le röviden, miben segíthetek, és milyen időpontok lennének jók.",
+      label_callback: "Inkább visszahívást kérek",
+      submit_btn: "Küldés →",
+      submit_btn_sending: "Küldés...",
+      status_success: "Köszönöm a jelentkezést! Hamarosan felveszem veled a kapcsolatot.",
+      status_error: "Sajnos most nem sikerült elküldeni. Kérlek, próbáld újra később, vagy közvetlenül az email fiókodból.",
+      footer_tagline: "Konduktív fejlesztés Budapesten"
+    },
+    en: {
+      title: "Virág Kelemen, conductor",
+      nav_about: "About",
+      nav_indications: "Who this is for",
+      nav_contact: "Contact",
+      nav_booking: "Book an appointment",
+      hero_title_html: 'Virág Kelemen, <strong>conductor.</strong>',
+      hero_text: "I believe every child develops at their own pace, and each pace calls for different kinds of support. Every small step matters in the early years. As a conductor, I support the development of children aged 0–5 with a holistic approach, tailored to each child's individual needs and the family's everyday life.",
+      hero_cta: "Book an appointment →",
+      about_eyebrow: "About",
+      about_h2_1: "Conductive development",
+      about_p1: "I'm Virág Kelemen, a conductor and drama teacher. I mainly work on the early development of children aged 0–3 and the development of children aged 3–5, in both Hungarian and English. I hold my sessions in Budapest, District XIII. I have gained professional experience both in Hungary and abroad. My work centers on prevention-based, holistic development, since the support given in early childhood plays a defining role in a child's development for years to come.",
+      about_h2_2: "My approach",
+      about_p2: "Every child is unique, with their own pace of development and abilities. As a conductor, my goal is to support children's development and help families bring out their children's full potential. Through complex early development, I work with children from birth to age 5 whose motor development or other areas of development need support. Development is always tailored to the individual needs of the child and the family. My work is grounded in the holistic approach of conductive education, which considers the child as a whole. Alongside motor development, emphasis is placed on attention, perception, communication, thinking, independence, and everyday skills. Sessions are playful, experience-centered, and age-appropriate, in a safe, accepting atmosphere. I place great importance on working together with parents, ongoing communication, and passing on practical advice that's useful in everyday life. I believe that working together lays the best foundation for a child's development. I warmly welcome you to a personal meeting, where together we can find the most suitable developmental path for your child.",
+      price_title: "Price list",
+      price_subtitle: "Prices in Hungarian forints, per session",
+      price_group1_title: "Assessment and individual development",
+      price_item1_name: "Comprehensive assessment",
+      price_item1_detail: "0–3 years / 3–5 years · 60–90 min assessment, case history + 30 min consultation",
+      price_item2_name: "Follow-up assessment",
+      price_item2_detail: "For re-assessments after 3–6 months · 60–90 min re-assessment, advice, recommendations for home",
+      price_group2_title: "After the assessment",
+      price_item3_name: "Professional opinion",
+      price_item4_name: "Comprehensive early motor development",
+      price_item4_detail: "0–3 years · 45 min",
+      price_item5_name: "Comprehensive motor development",
+      price_item5_detail: "3–5 years · 45 min",
+      price_item6_name: "Parent consultation, advice",
+      price_group3_title: "Group sessions",
+      price_group3_note: "Starts from 3 participants",
+      price_item7_name: "Group early motor development",
+      price_item7_detail: "0–3 years · 45 min",
+      price_item8_name: "Group comprehensive motor development",
+      price_item8_detail: "3–5 years · 45 min",
+      contact_eyebrow: "Contact",
+      contact_h2: "Contact & opening hours",
+      card_address_title: "Address",
+      card_contact_title: "Contact",
+      card_hours_title: "Opening hours",
+      hours_day: "Tuesday",
+      indications_eyebrow: "Who this is for",
+      indications_h2: "It's worth seeing a conductor if your child:",
+      indications_1: "has motor development that differs from the usual pace",
+      indications_2: "has uncertain movement, or balance issues",
+      indications_3: "has difficulty with fine motor tasks",
+      indications_4: "was born prematurely, and/or there were circumstances around birth that warrant closer developmental monitoring",
+      indications_5: "lives with a developmental difference of neurological origin",
+      indications_6: "has been referred by a pediatrician, health visitor, or other specialist for conductive development",
+      indications_7: "is developing communication or speech more slowly than expected",
+      indications_8: "you'd simply like to support your child's development proactively, and have questions about how it's progressing",
+      booking_h2: "Book an appointment",
+      booking_p: "Enter your details and I'll get back to you within a few days about available times.",
+      label_name: "Name",
+      label_phone: "Phone number",
+      label_email: "Email address",
+      label_message: "Message",
+      message_placeholder: "Briefly describe what I can help with, and which times would work for you.",
+      label_callback: "I'd rather be called back",
+      submit_btn: "Send →",
+      submit_btn_sending: "Sending...",
+      status_success: "Thank you for reaching out! I'll get back to you soon.",
+      status_error: "Sorry, something went wrong sending this. Please try again later, or email me directly.",
+      footer_tagline: "Conductive development in Budapest"
+    },
+    de: {
+      title: "Virág Kelemen, Konduktorin",
+      nav_about: "Über mich",
+      nav_indications: "Für wen geeignet",
+      nav_contact: "Kontakt",
+      nav_booking: "Termin vereinbaren",
+      hero_title_html: 'Virág Kelemen, <strong>Konduktorin.</strong>',
+      hero_text: "Ich glaube, dass sich jedes Kind in seinem eigenen Tempo entwickelt und dafür unterschiedliche Unterstützung braucht. In den ersten Lebensjahren zählt jeder kleine Schritt. Als Konduktorin begleite ich die Entwicklung von Kindern im Alter von 0–5 Jahren mit einem ganzheitlichen Ansatz, abgestimmt auf die individuellen Bedürfnisse des Kindes und den Alltag der Familie.",
+      hero_cta: "Termin vereinbaren →",
+      about_eyebrow: "Über mich",
+      about_h2_1: "Konduktive Förderung",
+      about_p1: "Ich bin Virág Kelemen, Konduktorin und Dramapädagogin. Ich beschäftige mich vor allem mit der Frühförderung von Kindern im Alter von 0–3 Jahren sowie mit der Förderung von 3–5-Jährigen, auf Ungarisch und Englisch. Meine Sitzungen finden in Budapest, im XIII. Bezirk statt. Ich habe sowohl im In- als auch im Ausland berufliche Erfahrung gesammelt. Im Mittelpunkt meiner Arbeit steht eine präventionsorientierte, ganzheitliche Förderung, da die in der frühen Kindheit geleistete Unterstützung die Entwicklung eines Kindes langfristig entscheidend prägt.",
+      about_h2_2: "Mein Ansatz",
+      about_p2: "Jedes Kind ist einzigartig, mit seinem eigenen Entwicklungstempo und eigenen Fähigkeiten. Als Konduktorin ist es mein Ziel, die Entwicklung der Kinder zu unterstützen und Familien dabei zu helfen, das Potenzial ihrer Kinder bestmöglich zu entfalten. Im Rahmen der komplexen Frühförderung arbeite ich mit Kindern von der Geburt bis zum 5. Lebensjahr, deren motorische Entwicklung oder andere Entwicklungsbereiche Unterstützung benötigen. Die Förderung wird stets an die individuellen Bedürfnisse des Kindes und der Familie angepasst. Grundlage meiner Arbeit ist der ganzheitliche Ansatz der konduktiven Pädagogik, der das Kind als Ganzes betrachtet. Neben der motorischen Entwicklung liegt der Schwerpunkt auch auf Aufmerksamkeit, Wahrnehmung, Kommunikation, Denken, Selbstständigkeit und alltäglichen Fertigkeiten. Die Sitzungen sind spielerisch, erlebnisorientiert und altersgerecht gestaltet, in einer sicheren, akzeptierenden Atmosphäre. Mir ist die Zusammenarbeit mit den Eltern, eine kontinuierliche Kommunikation und die Vermittlung praktischer, alltagstauglicher Ratschläge wichtig. Ich glaube, dass die gemeinsame Arbeit die beste Grundlage für die Entwicklung des Kindes schafft. Ich freue mich auf ein persönliches Kennenlernen, bei dem wir gemeinsam den passenden Förderweg für Ihr Kind finden.",
+      price_title: "Preisliste",
+      price_subtitle: "Preise in ungarischen Forint, pro Sitzung",
+      price_group1_title: "Diagnostik und Einzelförderung",
+      price_item1_name: "Komplexe Diagnostik",
+      price_item1_detail: "0–3 Jahre / 3–5 Jahre · 60–90 Min. Diagnostik, Anamnese + 30 Min. Beratung",
+      price_item2_name: "Kontrolluntersuchung",
+      price_item2_detail: "Bei Nachuntersuchung nach 3–6 Monaten · 60–90 Min. Nachuntersuchung, Beratung, Empfehlungen für zu Hause",
+      price_group2_title: "Nach der Diagnostik",
+      price_item3_name: "Fachgutachten",
+      price_item4_name: "Komplexe Frühförderung der Motorik",
+      price_item4_detail: "0–3 Jahre · 45 Min.",
+      price_item5_name: "Komplexe Förderung der Motorik",
+      price_item5_detail: "3–5 Jahre · 45 Min.",
+      price_item6_name: "Elternberatung",
+      price_group3_title: "Gruppenförderung",
+      price_group3_note: "Ab 3 Teilnehmenden",
+      price_item7_name: "Gruppen-Frühförderung der Motorik",
+      price_item7_detail: "0–3 Jahre · 45 Min.",
+      price_item8_name: "Komplexe Gruppenförderung der Motorik",
+      price_item8_detail: "3–5 Jahre · 45 Min.",
+      contact_eyebrow: "Kontakt",
+      contact_h2: "Kontakt und Öffnungszeiten",
+      card_address_title: "Adresse",
+      card_contact_title: "Kontakt",
+      card_hours_title: "Öffnungszeiten",
+      hours_day: "Dienstag",
+      indications_eyebrow: "Für wen geeignet",
+      indications_h2: "Ein Besuch bei einer Konduktorin lohnt sich, wenn Ihr Kind:",
+      indications_1: "eine motorische Entwicklung zeigt, die vom üblichen Tempo abweicht",
+      indications_2: "unsichere Bewegungen oder Gleichgewichtsprobleme zeigt",
+      indications_3: "Schwierigkeiten bei feinmotorischen Aufgaben hat",
+      indications_4: "frühgeboren wurde und/oder es Umstände rund um die Geburt gab, die eine engmaschigere Entwicklungsbeobachtung nahelegen",
+      indications_5: "mit einer neurologisch bedingten Entwicklungsbesonderheit lebt",
+      indications_6: "von Kinderarzt, Gesundheitspflegerin oder einer anderen Fachkraft zur konduktiven Förderung empfohlen wurde",
+      indications_7: "sich in Kommunikation oder Sprache langsamer entwickelt als erwartet",
+      indications_8: "Sie die Entwicklung Ihres Kindes vorbeugend und bewusst unterstützen möchten und Fragen zu deren Verlauf haben",
+      booking_h2: "Termin vereinbaren",
+      booking_p: "Geben Sie Ihre Daten ein, ich melde mich innerhalb weniger Tage mit den verfügbaren Terminen zurück.",
+      label_name: "Name",
+      label_phone: "Telefonnummer",
+      label_email: "E-Mail-Adresse",
+      label_message: "Nachricht",
+      message_placeholder: "Beschreiben Sie kurz, wobei ich helfen kann, und welche Termine für Sie passen würden.",
+      label_callback: "Ich möchte lieber zurückgerufen werden",
+      submit_btn: "Senden →",
+      submit_btn_sending: "Wird gesendet...",
+      status_success: "Vielen Dank für Ihre Anfrage! Ich melde mich bald bei Ihnen.",
+      status_error: "Leider konnte die Nachricht nicht gesendet werden. Bitte versuchen Sie es später erneut oder schreiben Sie mir direkt per E-Mail.",
+      footer_tagline: "Konduktive Förderung in Budapest"
+    }
+  };
+
+  let currentLang = localStorage.getItem('kv_lang') || 'hu';
+
+  function applyLanguage(lang) {
+    const dict = TRANSLATIONS[lang];
+    if (!dict) return;
+    currentLang = lang;
+    localStorage.setItem('kv_lang', lang);
+
+    document.getElementById('html-root').setAttribute('lang', lang);
+    document.getElementById('page-title').textContent = dict.title;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      if (dict[key + '_html'] !== undefined) el.innerHTML = dict[key + '_html'];
+    });
+
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+    });
+
+    document.querySelectorAll('.lang-switch button').forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    });
+  }
+
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.addEventListener('click', () => applyLanguage(btn.getAttribute('data-lang')));
+  });
+
+  applyLanguage(currentLang);
+
+  // ---------- Időpontkérő űrlap ----------
+  const bookingForm = document.getElementById('booking-form');
+  const formStatus = document.getElementById('form-status');
+  const submitBtn = document.getElementById('booking-submit');
+
+  bookingForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const callback = document.getElementById('callback').checked;
+    const formData = new FormData(bookingForm);
+
+    // A checkbox értékét szöveggé alakítjuk, hogy a levélben is jól olvasható legyen
+    formData.set('visszahivas', callback ? 'Igen' : 'Nem');
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = TRANSLATIONS[currentLang].submit_btn_sending;
+    formStatus.classList.remove('visible', 'error');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        formStatus.textContent = TRANSLATIONS[currentLang].status_success;
+        formStatus.classList.add('visible');
+        bookingForm.reset();
+      } else {
+        throw new Error(result.message || 'Web3Forms hiba');
+      }
+    } catch (err) {
+      formStatus.textContent = TRANSLATIONS[currentLang].status_error;
+      formStatus.classList.add('visible', 'error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = TRANSLATIONS[currentLang].submit_btn;
+    }
+  });
+</script>
+
+</body>
+</html>
+	
